@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface InputTextProps{ //인터페이스
+  onChange(e: React.ChangeEvent<HTMLInputElement>):void; // 아무것도 반환하지 않은 void 타입
+  onKeyDown(e:React.KeyboardEvent<HTMLInputElement>):void; // 엔터시 텍스트 입력
+  inputText:string;
 }
 
-export default App;
+const InputText = ({
+  onChange,
+  onKeyDown,
+  inputText
+}:InputTextProps) =>{
+  return(
+    <div className='inputTextContainer'>
+      <input type='text'
+        className='inputText'
+        placeholder='enter'
+        onChange={e=>onChange(e)}
+        onKeyDown={e=>onKeyDown(e)}
+        value={inputText}
+      />
+    </div>
+  )
+}
+export default InputText;
